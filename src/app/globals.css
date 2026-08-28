@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary-lime: #AFED00;
+  --primary-dark: #002323;
+  --secondary-pink: #FFA1CD;
+  --accent-yellow: #FFD602;
+  --accent-cyan: #17C4CF;
+  --neutral-cream: #FFF8F0;
+  --neutral-sand: #E9EFCB;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0d1313;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Hero gradient */
+.fedetur-gradient {
+  background: linear-gradient(135deg, #002323 0%, #004d4d 50%, #002323 100%);
+}
+
+.fedetur-gradient-lime {
+  background: linear-gradient(135deg, #AFED00 0%, #d4ff4d 100%);
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-panel-dark {
+  background: rgba(0, 35, 35, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(175, 237, 0, 0.2);
+}
+
+/* Carnet Digital 3D Holographic effect */
+.carnet-hologram {
+  background: linear-gradient(135deg, #002323 0%, #073838 40%, #002323 100%);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -15px rgba(0, 35, 35, 0.5), 0 0 20px 2px rgba(175, 237, 0, 0.2);
+}
+
+.carnet-hologram::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 40%,
+    rgba(175, 237, 0, 0.15) 50%,
+    rgba(255, 161, 205, 0.15) 55%,
+    transparent 65%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+}

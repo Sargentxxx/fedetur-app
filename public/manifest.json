@@ -1,0 +1,24 @@
+{
+  "name": "FEDETUR - Red Federal de Turismo Social y Solidario",
+  "short_name": "FEDETUR",
+  "description": "Federación de Cooperativas y Mutuales de la Red Federal de Turismo Coop. Ltda. (Matrícula INAES 25450)",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#002323",
+  "theme_color": "#AFED00",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://ss-cnt-001c.esmsv.com/r/content/host2/3696a6317d859ead6647480b66afbb18/favicon/Logo-FedeturAvigra-(7542)-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://ss-cnt-001c.esmsv.com/r/content/host2/3696a6317d859ead6647480b66afbb18/favicon/Logo-FedeturAvigra-(7542)-192.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
