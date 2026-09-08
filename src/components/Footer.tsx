@@ -1,38 +1,34 @@
 import React from 'react';
 import Link from 'next/link';
-import { Mail, Instagram, Youtube, MapPin, Award, ShieldCheck, HeartHandshake } from 'lucide-react';
+import { Mail, Instagram, Youtube, MapPin, Award, ShieldCheck, Phone, CheckCircle } from 'lucide-react';
 import { FEDETUR_INFO } from '@/lib/mockData';
+import { FedeturLogo } from '@/components/FedeturLogo';
 
 export function Footer() {
   return (
-    <footer className="bg-fedetur-slate text-white pt-16 pb-8 border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-[#001C38] text-white pt-16 pb-10 border-t border-white/10 mt-auto">
+      <div className="max-w-portal mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/15">
           
-          {/* Col 1: FEDETUR Brand & Mission */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-fedetur-lime flex items-center justify-center text-fedetur-dark font-black text-xl">
-                FD
-              </div>
-              <div>
-                <h3 className="font-extrabold text-lg tracking-tight">FEDETUR</h3>
-                <span className="text-[10px] text-slate-400 uppercase tracking-wider block">
-                  Matrícula I.N.A.E.S. 25450
-                </span>
-              </div>
-            </div>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              Federación de Cooperativas y Mutuales de la Red Federal de Turismo Coop. Ltda. Impulsando el desarrollo territorial a través del Turismo Social y Solidario en toda la República Argentina.
+          {/* Col 1: FEDETUR Brand & Mission (2 cols) */}
+          <div className="lg:col-span-2 space-y-4">
+            <Link href="/" className="inline-block">
+              <FedeturLogo variant="white" size="lg" showBadge={false} />
+            </Link>
+
+            <p className="text-xs text-slate-300 leading-relaxed max-w-sm font-normal">
+              Federación de Cooperativas y Mutuales de la Red Federal de Turismo Social, Solidario y Comunitario Coop. Ltda. (Matrícula I.N.A.E.S. 25450). Articulando a mutuales, cooperativas y complejos turísticos en beneficio del pueblo trabajador.
             </p>
+
+            {/* Redes Sociales y Contacto Rápido */}
             <div className="pt-2 flex items-center gap-3">
               <a
                 href={FEDETUR_INFO.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-fedetur-pink hover:text-fedetur-dark flex items-center justify-center text-slate-300 transition-colors"
+                className="w-9 h-9 rounded-xl bg-white/10 hover:bg-[#00A3E0] hover:text-white flex items-center justify-center text-slate-300 transition-all shadow-sm"
                 title="Instagram FEDETUR"
               >
                 <Instagram className="w-4 h-4" />
@@ -41,30 +37,116 @@ export function Footer() {
                 href={FEDETUR_INFO.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-red-600 hover:text-white flex items-center justify-center text-slate-300 transition-colors"
+                className="w-9 h-9 rounded-xl bg-white/10 hover:bg-red-600 hover:text-white flex items-center justify-center text-slate-300 transition-all shadow-sm"
                 title="YouTube FEDETUR"
               >
                 <Youtube className="w-4 h-4" />
               </a>
               <a
                 href={`mailto:${FEDETUR_INFO.email}`}
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-fedetur-lime hover:text-fedetur-dark flex items-center justify-center text-slate-300 transition-colors"
+                className="w-9 h-9 rounded-xl bg-white/10 hover:bg-[#00A3E0] hover:text-white flex items-center justify-center text-slate-300 transition-all shadow-sm"
                 title="Email FEDETUR"
               >
                 <Mail className="w-4 h-4" />
               </a>
+              <a
+                href={`tel:${FEDETUR_INFO.phone}`}
+                className="w-9 h-9 rounded-xl bg-white/10 hover:bg-emerald-600 hover:text-white flex items-center justify-center text-slate-300 transition-all shadow-sm"
+                title="Teléfono Mesa Federal"
+              >
+                <Phone className="w-4 h-4" />
+              </a>
+            </div>
+
+            {/* Sello de Matrícula */}
+            <div className="pt-2 flex items-center gap-2 text-xs font-bold text-sky-200">
+              <CheckCircle className="w-4 h-4 text-sky-400" />
+              <span>Entidad Auditada & Homologada por el Estado Nacional</span>
             </div>
           </div>
 
-          {/* Col 2: Institucional & Accionar */}
+          {/* Col 2: Explorar Portal */}
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-fedetur-lime mb-4">
-              Institucional
+            <h4 className="text-xs font-extrabold uppercase tracking-widest text-sky-300 mb-4">
+              Explorar Portal
+            </h4>
+            <ul className="space-y-2.5 text-xs text-slate-300">
+              <li>
+                <Link href="/" className="hover:text-white transition-colors">
+                  Inicio & Buscador
+                </Link>
+              </li>
+              <li>
+                <Link href="/hoteles" className="hover:text-white transition-colors">
+                  Catálogo Federal de Hoteles
+                </Link>
+              </li>
+              <li>
+                <Link href="/#regionalizacion" className="hover:text-white transition-colors">
+                  Regiones Federales INAES
+                </Link>
+              </li>
+              <li>
+                <Link href="/#beneficios" className="hover:text-white transition-colors">
+                  Beneficios y Descuentos
+                </Link>
+              </li>
+              <li>
+                <Link href="/#entidades" className="hover:text-white transition-colors">
+                  Entidades Mutuales Adheridas
+                </Link>
+              </li>
+              <li>
+                <Link href="/#contacto-portal" className="hover:text-white transition-colors">
+                  Mesa de Ayuda Federal
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 3: Hoteles & Prestadores */}
+          <div>
+            <h4 className="text-xs font-extrabold uppercase tracking-widest text-amber-300 mb-4">
+              Hoteles & Mutuales
+            </h4>
+            <ul className="space-y-2.5 text-xs text-slate-300">
+              <li>
+                <Link href="/hotel/portal" className="hover:text-white transition-colors font-bold text-amber-200">
+                  Alta de Hotel / Prestador
+                </Link>
+              </li>
+              <li>
+                <Link href="/afiliado/dashboard" className="hover:text-white transition-colors">
+                  Carnet Digital con QR
+                </Link>
+              </li>
+              <li>
+                <Link href="/auth/registro" className="hover:text-white transition-colors">
+                  Afiliación para Mutuales
+                </Link>
+              </li>
+              <li>
+                <Link href="/censo-2025" className="hover:text-white transition-colors">
+                  Censo Federal 2025
+                </Link>
+              </li>
+              <li>
+                <Link href="/admin" className="hover:text-white transition-colors">
+                  Panel de Administración
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 4: Institucional & Legal */}
+          <div>
+            <h4 className="text-xs font-extrabold uppercase tracking-widest text-sky-300 mb-4">
+              Marco Institucional
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-300">
               <li>
                 <Link href="/autoridades" className="hover:text-white transition-colors">
-                  Consejo de Administración & Autoridades
+                  Consejo de Administración
                 </Link>
               </li>
               <li>
@@ -78,105 +160,33 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/censo-2025" className="hover:text-white transition-colors">
-                  Censo Federal de Entidades 2025-2026
-                </Link>
+                <span className="text-slate-400">
+                  Miembro C.O.N.A.M. & O.D.E.M.A.
+                </span>
               </li>
               <li>
-                <Link href="/#entidades-adheridas" className="hover:text-white transition-colors">
-                  Entidades Mutuales y Cooperativas Adheridas
-                </Link>
+                <span className="text-slate-400">
+                  Sede: Av. de Mayo 822, CABA
+                </span>
               </li>
             </ul>
-          </div>
-
-          {/* Col 3: Red Federal & Destinos */}
-          <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-fedetur-lime mb-4">
-              Regionales & Turismo
-            </h4>
-            <ul className="space-y-2.5 text-xs text-slate-300">
-              <li>
-                <Link href="/hoteles?region=NEA" className="hover:text-white transition-colors">
-                  Región NEA (Iguazú, Chaco, Corrientes)
-                </Link>
-              </li>
-              <li>
-                <Link href="/hoteles?region=NOA" className="hover:text-white transition-colors">
-                  Región NOA (Salta, Jujuy, Santiago del Estero)
-                </Link>
-              </li>
-              <li>
-                <Link href="/hoteles?region=Centro" className="hover:text-white transition-colors">
-                  Región Centro (Córdoba, Santa Fe, Entre Ríos)
-                </Link>
-              </li>
-              <li>
-                <Link href="/hoteles?region=Cuyo" className="hover:text-white transition-colors">
-                  Región Cuyo (Mendoza, San Juan, San Luis)
-                </Link>
-              </li>
-              <li>
-                <Link href="/hoteles?region=Buenos+Aires" className="hover:text-white transition-colors">
-                  Región Buenos Aires & Costa Atlántica
-                </Link>
-              </li>
-              <li>
-                <Link href="/hoteles?region=Patagonia" className="hover:text-white transition-colors">
-                  Región Patagonia & Islas Malvinas
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 4: Portales & Contacto */}
-          <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-fedetur-lime mb-4">
-              Portales & Contacto
-            </h4>
-            <ul className="space-y-2.5 text-xs text-slate-300 mb-4">
-              <li>
-                <Link href="/afiliado/dashboard" className="text-emerald-400 hover:underline font-semibold">
-                  Acceso Portal Afiliado (Carnet Digital)
-                </Link>
-              </li>
-              <li>
-                <Link href="/hotel/portal" className="text-blue-400 hover:underline font-semibold">
-                  Portal Hoteles (Publicar Alojamiento)
-                </Link>
-              </li>
-              <li>
-                <Link href="/admin" className="text-amber-400 hover:underline font-semibold">
-                  Administración FEDETUR (Auditoría)
-                </Link>
-              </li>
-            </ul>
-            <div className="bg-white/5 p-3 rounded-xl border border-white/10 text-[11px] text-slate-300">
-              <div className="font-bold text-white mb-1">Sede Central CABA</div>
-              <div className="flex items-start gap-1 text-slate-400">
-                <MapPin className="w-3.5 h-3.5 shrink-0 text-fedetur-lime mt-0.5" />
-                <span>Ciudad Autónoma de Buenos Aires, República Argentina</span>
-              </div>
-              <div className="mt-2 text-fedetur-lime font-mono">info@fedetur.ar</div>
-            </div>
           </div>
 
         </div>
 
-        {/* Bottom Legal & INAES Note */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-[11px] text-slate-400 gap-4">
-          <div className="flex items-center gap-2">
-            <HeartHandshake className="w-4 h-4 text-fedetur-lime" />
-            <span>
-              &copy; {new Date().getFullYear()} FEDETUR Coop. Ltda. • Matrícula I.N.A.E.S. 25450 • Todos los derechos reservados.
-            </span>
+        {/* Fila Inferior de Copyright & Legal */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+          <div>
+            © {new Date().getFullYear()} FEDETUR · Matrícula I.N.A.E.S. 25450 · Todos los derechos reservados.
           </div>
-          <div className="flex items-center gap-4">
-            <Link href="/nuestra-mision" className="hover:text-white">Términos de Servicio</Link>
-            <span>•</span>
-            <Link href="/nuestra-mision" className="hover:text-white">Política de Privacidad</Link>
-            <span>•</span>
-            <span className="text-fedetur-lime font-bold">Desarrollo Social & Solidario</span>
+          <div className="flex items-center gap-6">
+            <a href="mailto:mesadeayuda@fedetur.ar" className="hover:text-white transition-colors">
+              Mesa de Ayuda
+            </a>
+            <Link href="/#contacto-portal" className="hover:text-white transition-colors">
+              Libro de Quejas Digital
+            </Link>
+            <span className="text-slate-500">República Argentina</span>
           </div>
         </div>
 
@@ -184,3 +194,5 @@ export function Footer() {
     </footer>
   );
 }
+
+export default Footer;

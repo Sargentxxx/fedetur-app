@@ -8,6 +8,7 @@ export const FEDETUR_INFO = {
   subSlogan: 'Impulsando el desarrollo territorial a través del Turismo Social y Solidario en toda Argentina',
   legalAddress: 'Ciudad Autónoma de Buenos Aires, Argentina',
   email: 'info@fedetur.ar',
+  phone: '+54 (11) 4382-9000',
   instagram: 'https://www.instagram.com/fedeturargentina25450/?hl=es',
   youtube: 'https://youtube.com/@fedeturargentina?si=1xYOzq8-QOIePX1i',
   stats: {

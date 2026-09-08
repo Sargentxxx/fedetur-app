@@ -1,37 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primary-lime: #AFED00;
-  --primary-dark: #002323;
-  --secondary-pink: #FFA1CD;
-  --accent-yellow: #FFD602;
-  --accent-cyan: #17C4CF;
-  --neutral-cream: #FFF8F0;
-  --neutral-sand: #E9EFCB;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0d1313;
-    --foreground: #ededed;
-  }
+  --background: #fbf9f5;
+  --foreground: #111c2d;
+  --font-jakarta: 'Plus Jakarta Sans', sans-serif;
+  --primary: #003561;
+  --primary-marine: #004c87;
+  --secondary: #00658d;
+  --cyan: #00a3e0;
+  --gold: #f5a623;
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--background);
+  font-family: var(--font-jakarta), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Custom scrollbars */
+/* Custom modern scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -40,43 +35,65 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
-  border-radius: 4px;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
 
-/* Hero gradient */
-.fedetur-gradient {
-  background: linear-gradient(135deg, #002323 0%, #004d4d 50%, #002323 100%);
+/* ========================================================================= */
+/* HIGGSFIELD AI & STITCH GLASSMORPHISM 2.0 UTILITIES                        */
+/* ========================================================================= */
+
+.glass-higgsfield {
+  background: rgba(10, 17, 32, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15), 0 20px 40px -15px rgba(0, 0, 0, 0.5);
 }
 
-.fedetur-gradient-lime {
-  background: linear-gradient(135deg, #AFED00 0%, #d4ff4d 100%);
+.glass-portal {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 20px 50px -10px rgba(0, 53, 97, 0.12), 0 0 0 1px rgba(226, 232, 240, 0.6);
 }
 
-/* Glassmorphism */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-panel-dark {
-  background: rgba(0, 35, 35, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(175, 237, 0, 0.2);
+.glass-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px -12px rgba(0, 76, 135, 0.18), 0 0 0 1px rgba(56, 182, 255, 0.3);
+}
+
+/* Gradients */
+.bg-gradient-fedetur {
+  background: linear-gradient(135deg, #001c38 0%, #003561 50%, #004c87 100%);
+}
+
+.text-gradient-higgsfield {
+  background: linear-gradient(135deg, #ffffff 15%, #d3e4ff 60%, #ffd13b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #81cfff 0%, #00a3e0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Carnet Digital 3D Holographic effect */
 .carnet-hologram {
-  background: linear-gradient(135deg, #002323 0%, #073838 40%, #002323 100%);
+  background: linear-gradient(135deg, #001c38 0%, #003561 45%, #004c87 100%);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 20px 40px -15px rgba(0, 35, 35, 0.5), 0 0 20px 2px rgba(175, 237, 0, 0.2);
+  box-shadow: 0 25px 50px -12px rgba(0, 28, 56, 0.6), 0 0 30px 2px rgba(56, 182, 255, 0.25);
 }
 
 .carnet-hologram::after {
@@ -89,10 +106,20 @@ body {
   background: linear-gradient(
     60deg,
     transparent 40%,
-    rgba(175, 237, 0, 0.15) 50%,
-    rgba(255, 161, 205, 0.15) 55%,
-    transparent 65%
+    rgba(56, 182, 255, 0.18) 48%,
+    rgba(255, 209, 59, 0.15) 54%,
+    transparent 62%
   );
   transform: rotate(25deg);
   pointer-events: none;
+  animation: shimmer 6s infinite ease-in-out;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) rotate(25deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(25deg);
+  }
 }

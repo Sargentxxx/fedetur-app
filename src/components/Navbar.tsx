@@ -9,14 +9,15 @@ import {
   User, 
   Building, 
   Shield, 
-  MapPin, 
-  Phone, 
   Mail, 
-  Sparkles, 
-  Calendar,
+  CheckCircle,
   CreditCard,
-  ChevronDown
+  ChevronDown,
+  Sparkles,
+  Phone,
+  ArrowRight
 } from 'lucide-react';
+import { FedeturLogo } from '@/components/FedeturLogo';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,74 +26,68 @@ export function Navbar() {
 
   const navLinks = [
     { name: 'Inicio', href: '/' },
-    { name: 'Hoteles & Reservas', href: '/hoteles' },
-    { name: 'Regionales', href: '/#regionales' },
-    { name: 'Entidades Adheridas', href: '/#entidades-adheridas' },
+    { name: 'Red Hotelera', href: '/hoteles' },
+    { name: 'Regiones', href: '/#regionalizacion' },
+    { name: 'Beneficios', href: '/#beneficios' },
+    { name: 'Entidades', href: '/#entidades' },
     { name: 'Autoridades', href: '/autoridades' },
-    { name: 'Nuestra Misión', href: '/nuestra-mision' },
-    { name: 'Contacto', href: '/#contacto' },
+    { name: 'Contacto', href: '/#contacto-portal' },
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-fedetur-dark/95 backdrop-blur-md text-white border-b border-white/10 shadow-lg">
-      {/* Top Banner de Matrícula y Asistencia */}
-      <div className="bg-black/40 text-[11px] py-1 px-4 border-b border-white/5">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="bg-fedetur-lime text-fedetur-dark px-1.5 py-0.5 rounded font-black text-[9px]">
-              INAES 25450
+    <header className="sticky top-0 z-50 w-full transition-all">
+      {/* Sub-cinta superior institucional Stitch */}
+      <div className="bg-[#003561] text-white py-1.5 px-4 sm:px-8 border-b border-white/10 hidden md:block">
+        <div className="max-w-portal mx-auto flex items-center justify-between text-xs tracking-wide">
+          <div className="flex items-center gap-4">
+            <span className="inline-flex items-center gap-1.5 font-bold tracking-wider text-sky-200 uppercase bg-white/10 px-2.5 py-0.5 rounded-full text-[10px]">
+              <CheckCircle className="w-3 h-3 text-sky-300" />
+              Matrícula I.N.A.E.S. 25450
             </span>
-            <span className="text-slate-300 hidden sm:inline">
-              Federación de Cooperativas y Mutuales de la Red Federal de Turismo
+            <span className="text-white/40">|</span>
+            <span className="text-white/85 text-[11px] font-medium hidden lg:inline">
+              Red Federal de Turismo Social, Solidario y Cooperativo de la República Argentina
             </span>
           </div>
-          <div className="flex items-center gap-4 text-slate-300">
-            <a href="mailto:info@fedetur.ar" className="hover:text-fedetur-lime flex items-center gap-1">
-              <Mail className="w-3 h-3" />
-              <span>info@fedetur.ar</span>
-            </a>
+
+          <div className="flex items-center gap-5 text-[11px]">
             <a 
-              href="https://www.instagram.com/fedeturargentina25450/?hl=es" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="hover:text-fedetur-pink text-slate-400 font-semibold"
+              href="mailto:mesadeayuda@fedetur.ar" 
+              className="text-white/80 hover:text-white transition-colors flex items-center gap-1 font-medium"
             >
-              @fedeturargentina
+              <Mail className="w-3.5 h-3.5 text-sky-300" /> 
+              <span>mesadeayuda@fedetur.ar</span>
             </a>
+            <span className="text-white/40">•</span>
+            <div className="text-amber-300 font-bold flex items-center gap-1 bg-amber-400/10 px-2 py-0.5 rounded-md border border-amber-400/20">
+              <Sparkles className="w-3 h-3 text-amber-300 fill-amber-300" />
+              <span>Hasta 30% OFF directo a mutualistas</span>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Main Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+      {/* Navegación principal en cristal flotante */}
+      <div className="bg-white/95 backdrop-blur-xl border-b border-slate-200/70 shadow-[0_4px_25px_rgba(0,53,97,0.06)]">
+        <div className="max-w-portal mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
           
-          {/* Logo Brand */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-11 h-11 rounded-2xl bg-fedetur-lime flex items-center justify-center text-fedetur-dark font-black text-xl shadow-md group-hover:scale-105 transition-transform">
-              FD
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-black tracking-tight text-white flex items-center gap-1.5">
-                FEDETUR
-                <span className="w-2 h-2 rounded-full bg-fedetur-lime inline-block animate-pulse" />
-              </span>
-              <span className="text-[10px] text-slate-300 uppercase tracking-widest font-medium">
-                Turismo Social & Solidario
-              </span>
-            </div>
+          {/* Logo Oficial FEDETUR Nativo */}
+          <Link href="/" className="shrink-0 focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-xl p-1">
+            <FedeturLogo variant="auto" size="md" showBadge={true} />
           </Link>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-6">
+          {/* Links de navegación editorial */}
+          <nav className="hidden xl:flex items-center gap-7 text-xs font-bold tracking-wide text-slate-600">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-sm font-semibold transition-colors hover:text-fedetur-lime ${
-                    isActive ? 'text-fedetur-lime' : 'text-slate-200'
+                  className={`transition-all py-1.5 border-b-2 hover:text-[#003561] ${
+                    isActive 
+                      ? 'text-[#003561] border-[#00A3E0] font-extrabold' 
+                      : 'border-transparent text-slate-600 hover:border-slate-300'
                   }`}
                 >
                   {link.name}
@@ -101,148 +96,143 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* User & Portals Action Menu */}
-          <div className="hidden md:flex items-center gap-3">
-            {/* Quick Access Roles Dropdown */}
+          {/* Acciones y Portales */}
+          <div className="hidden sm:flex items-center gap-3">
+            {/* Alta de Hoteles / Prestadores */}
+            <Link
+              href="/hotel/portal"
+              className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl border border-sky-500/30 bg-sky-50 text-[#00658D] hover:bg-[#00658D] hover:text-white font-bold transition-all text-xs group"
+            >
+              <Building className="w-4 h-4 text-[#00A3E0] group-hover:text-white transition-colors" />
+              <span>Portal Hoteles</span>
+            </Link>
+
+            {/* Carnet Digital Afiliado */}
+            <Link
+              href="/afiliado/dashboard"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#003561] hover:bg-[#004C87] text-white font-bold shadow-md hover:shadow-lg hover:shadow-[#003561]/20 transition-all text-xs"
+            >
+              <CreditCard className="w-4 h-4 text-amber-400" />
+              <span>Carnet Afiliado</span>
+            </Link>
+
+            {/* Selector de Portales Dropdown */}
             <div className="relative">
               <button
+                type="button"
                 onClick={() => setRoleDropdown(!roleDropdown)}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-xs font-bold text-white border border-white/10 transition-all"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-colors border border-slate-200"
+                aria-label="Menú de accesos institucionales"
               >
-                <span>Portales</span>
-                <ChevronDown className="w-3.5 h-3.5" />
+                <span>Accesos</span>
+                <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
               </button>
 
               {roleDropdown && (
                 <div 
-                  className="absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl py-2 text-slate-800 border border-slate-100 z-50 animate-in fade-in zoom-in-95 duration-150"
+                  className="absolute right-0 mt-2 w-60 bg-white rounded-2xl shadow-2xl py-2 text-slate-800 border border-slate-200/80 z-50 animate-in fade-in zoom-in-95 duration-150"
                   onClick={() => setRoleDropdown(false)}
                 >
-                  <div className="px-3 py-1.5 text-[10px] uppercase font-bold text-slate-400 border-b border-slate-100">
-                    Accesos Especializados
+                  <div className="px-4 py-2 text-[10px] uppercase font-extrabold text-slate-400 border-b border-slate-100 tracking-wider">
+                    Red Federal de Servicios
                   </div>
                   <Link
                     href="/afiliado/dashboard"
-                    className="flex items-center gap-2.5 px-3.5 py-2.5 hover:bg-slate-50 text-xs font-semibold text-slate-700 hover:text-fedetur-dark"
+                    className="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-50 text-xs font-semibold text-slate-700 hover:text-[#003561]"
                   >
                     <User className="w-4 h-4 text-emerald-600" />
                     <div>
-                      <div className="font-bold">Portal Afiliado</div>
-                      <div className="text-[10px] text-slate-400">Carnet y Mis Reservas</div>
+                      <div className="font-bold text-slate-900">Portal Afiliados</div>
+                      <div className="text-[10px] text-slate-500">Carnet Digital & Vouchers</div>
                     </div>
                   </Link>
                   <Link
                     href="/hotel/portal"
-                    className="flex items-center gap-2.5 px-3.5 py-2.5 hover:bg-slate-50 text-xs font-semibold text-slate-700 hover:text-fedetur-dark"
+                    className="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-50 text-xs font-semibold text-slate-700 hover:text-[#003561]"
                   >
-                    <Building className="w-4 h-4 text-blue-600" />
+                    <Building className="w-4 h-4 text-sky-600" />
                     <div>
-                      <div className="font-bold">Portal Hotel / Prestador</div>
-                      <div className="text-[10px] text-slate-400">Publicar y Gestionar Plazas</div>
+                      <div className="font-bold text-slate-900">Portal Hoteles</div>
+                      <div className="text-[10px] text-slate-500">Alta y Gestión de Plazas</div>
                     </div>
                   </Link>
                   <Link
                     href="/admin"
-                    className="flex items-center gap-2.5 px-3.5 py-2.5 hover:bg-slate-50 text-xs font-semibold text-slate-700 hover:text-fedetur-dark"
+                    className="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-50 text-xs font-semibold text-slate-700 hover:text-[#003561]"
                   >
                     <Shield className="w-4 h-4 text-amber-600" />
                     <div>
-                      <div className="font-bold">Admin FEDETUR</div>
-                      <div className="text-[10px] text-slate-400">Auditoría, Padrón y Finanzas</div>
+                      <div className="font-bold text-slate-900">Administración Central</div>
+                      <div className="text-[10px] text-slate-500">Auditoría INAES & Convenios</div>
                     </div>
                   </Link>
                 </div>
               )}
             </div>
-
-            {/* Login / Registro */}
-            <Link
-              href="/auth/login"
-              className="px-4 py-2 rounded-xl text-xs font-bold text-slate-200 hover:text-white hover:bg-white/10 transition-colors"
-            >
-              Iniciar Sesión
-            </Link>
-
-            <Link
-              href="/auth/registro"
-              className="px-4 py-2.5 rounded-xl text-xs font-black text-fedetur-dark bg-fedetur-lime hover:bg-fedetur-lime-dark transition-all shadow-md hover:shadow-fedetur-lime/20"
-            >
-              Registrarme
-            </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="flex md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/10"
-              aria-label="Abrir Menú"
+          {/* Botón menú móvil */}
+          <div className="flex xl:hidden items-center gap-2">
+            <Link
+              href="/afiliado/dashboard"
+              className="sm:hidden px-3 py-1.5 rounded-lg bg-[#003561] text-white text-xs font-bold flex items-center gap-1"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <CreditCard className="w-3.5 h-3.5 text-amber-300" />
+              <span>Carnet</span>
+            </Link>
+            <button
+              type="button"
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors"
+              aria-label="Abrir menú"
+            >
+              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
 
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Menú Móvil desplegable */}
       {isOpen && (
-        <div className="md:hidden bg-fedetur-navy border-b border-white/10 px-4 pt-2 pb-6 space-y-3">
-          <nav className="flex flex-col space-y-1">
+        <div className="xl:hidden bg-white/95 backdrop-blur-2xl border-b border-slate-200 px-6 py-6 shadow-2xl space-y-4 animate-in slide-in-from-top-4 duration-200">
+          <div className="flex flex-col space-y-2">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="px-3 py-2 rounded-lg text-sm font-medium text-slate-200 hover:bg-white/10 hover:text-fedetur-lime"
+                className="px-3 py-2.5 rounded-xl text-sm font-bold text-slate-700 hover:bg-slate-100 hover:text-[#003561] transition-colors"
               >
                 {link.name}
               </Link>
             ))}
-          </nav>
+          </div>
 
-          <div className="pt-4 border-t border-white/10 space-y-2">
-            <div className="text-xs uppercase font-bold text-slate-400 px-3">Portales</div>
-            <Link
-              href="/afiliado/dashboard"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold text-emerald-400 bg-white/5"
-            >
-              <User className="w-4 h-4" />
-              <span>Portal Afiliado (Carnet)</span>
-            </Link>
+          <div className="pt-4 border-t border-slate-200/80 flex flex-col gap-2.5">
             <Link
               href="/hotel/portal"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold text-blue-400 bg-white/5"
+              className="w-full py-3 rounded-xl border border-sky-400/40 bg-sky-50 text-[#00658D] font-bold text-xs flex items-center justify-center gap-2"
             >
-              <Building className="w-4 h-4" />
-              <span>Portal Hoteles (Carga & Plazas)</span>
+              <Building className="w-4 h-4 text-[#00A3E0]" />
+              <span>Portal Hoteles & Prestadores</span>
+            </Link>
+            <Link
+              href="/afiliado/dashboard"
+              onClick={() => setIsOpen(false)}
+              className="w-full py-3 rounded-xl bg-[#003561] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md"
+            >
+              <CreditCard className="w-4 h-4 text-amber-300" />
+              <span>Mi Carnet Digital con QR</span>
             </Link>
             <Link
               href="/admin"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold text-amber-400 bg-white/5"
+              className="w-full py-2.5 rounded-xl bg-slate-100 text-slate-600 font-bold text-xs flex items-center justify-center gap-2"
             >
-              <Shield className="w-4 h-4" />
-              <span>Admin FEDETUR (Auditoría)</span>
-            </Link>
-          </div>
-
-          <div className="pt-2 grid grid-cols-2 gap-2">
-            <Link
-              href="/auth/login"
-              onClick={() => setIsOpen(false)}
-              className="w-full text-center py-2.5 rounded-xl text-xs font-bold text-white bg-white/10"
-            >
-              Iniciar Sesión
-            </Link>
-            <Link
-              href="/auth/registro"
-              onClick={() => setIsOpen(false)}
-              className="w-full text-center py-2.5 rounded-xl text-xs font-black text-fedetur-dark bg-fedetur-lime"
-            >
-              Crear Cuenta
+              <Shield className="w-3.5 h-3.5 text-amber-600" />
+              <span>Administración INAES</span>
             </Link>
           </div>
         </div>
@@ -250,3 +240,5 @@ export function Navbar() {
     </header>
   );
 }
+
+export default Navbar;
