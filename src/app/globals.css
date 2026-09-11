@@ -115,11 +115,52 @@ body {
   animation: shimmer 6s infinite ease-in-out;
 }
 
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%) rotate(25deg);
+/* UI UX Pro Max: Glow, Glassmorphism & Elevation Utilities */
+.glow-sky {
+  box-shadow: 0 0 35px -5px rgba(14, 165, 233, 0.45);
+}
+
+.glow-amber {
+  box-shadow: 0 0 35px -5px rgba(245, 158, 11, 0.45);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.4);
+}
+
+.glass-navy {
+  background: rgba(0, 29, 56, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.card-elevated {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-elevated:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 35px -10px rgba(0, 34, 68, 0.15);
+}
+
+.mesh-ambient {
+  background-image: 
+    radial-gradient(at 15% 15%, rgba(14, 165, 233, 0.12) 0px, transparent 50%),
+    radial-gradient(at 85% 85%, rgba(245, 158, 11, 0.08) 0px, transparent 50%);
+}
+
+/* UI UX Pro Max: Accessibility & Reduced Motion standard */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
-  100% {
-    transform: translateX(100%) rotate(25deg);
+  .carnet-hologram::after {
+    animation: none !important;
   }
 }

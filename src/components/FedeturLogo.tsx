@@ -28,6 +28,19 @@ export function FedeturLogo({
       ? '/images/logo-fedetur-white.png'
       : '/images/logo-fedetur.png';
 
+  const isWhiteVariant = variant === 'white' || variant === 'light';
+
+  // Filtro de contorno oscuro perimetral para que las letras blancas y especialmente el 'tur' celeste
+  // destaquen con nitidez absoluta y borde definido sobre cualquier fondo oscuro (navbar, hero, etc.)
+  const logoOutlineFilter: React.CSSProperties = isWhiteVariant
+    ? {
+        filter:
+          'drop-shadow(1px 0 0 #000814) drop-shadow(-1px 0 0 #000814) drop-shadow(0 1px 0 #000814) drop-shadow(0 -1px 0 #000814) drop-shadow(1px 1px 0 #000814) drop-shadow(-1px -1px 0 #000814) drop-shadow(1px -1px 0 #000814) drop-shadow(-1px 1px 0 #000814) drop-shadow(0 2px 5px rgba(0, 0, 0, 0.9)) brightness(1.08) contrast(1.05)',
+      }
+    : {
+        filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1))',
+      };
+
   return (
     <div className={`inline-flex items-center gap-3.5 group select-none ${className}`}>
       {/* Contenedor del logotipo con efecto nativo y resplandor sutil */}
@@ -35,7 +48,8 @@ export function FedeturLogo({
         <img
           src={imageSrc}
           alt="FEDETUR · Federación de Turismo"
-          className={`${heights[size]} w-auto object-contain drop-shadow-sm`}
+          style={logoOutlineFilter}
+          className={`${heights[size]} w-auto object-contain`}
           loading="eager"
         />
       </div>
